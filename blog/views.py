@@ -5,19 +5,28 @@ from django.http import HttpResponse
 
 posts = [
     {
-        'author':   'CoreyMS',
+        'author':   'Magnus',
         'title':    'Blog Post 1',
         'content':  'First post conent',
         'date_posted': '24.02.19'
+    },
+    {
+        'author':   'Live',
+        'title':    'Blog Post 2',
+        'content':  'Second post conent',
+        'date_posted': '25.02.19'
     }
 
 ]
 
 def home(request):
-    return render(request, 'blog/home.html', {})
+    context = {
+        'posts': posts
+    }
+    return render(request, 'blog/home.html', context)
 
 def about(request):
-    return render(request, 'blog/about.html', {})
+    return render(request, 'blog/about.html', {'title': 'About'})
 
 def post_list(request):
     return render(request, 'blog/post_list.html', {})
